@@ -11,7 +11,7 @@ public class Server {
     private static final int MAXPOOL = 100; // thread massimi attivi nel pool
     private static final long IDLETIME = 5000; // tempo di inattività di un thread prima della rimozione
 
-    private static final int SPORT = 4444;
+    private static final int SPORT = 8354;
 
     private ServerSocket socket;
     private ThreadPoolExecutor pool;

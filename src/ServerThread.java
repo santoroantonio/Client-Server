@@ -46,11 +46,11 @@ public class ServerThread implements Runnable {
                             this.socket.getOutputStream()));
                 }
 
-                Response rs = new Response(r.nextInt(MIN, MAX + 1));
+                Request rq = new Request(r.nextInt(MIN, MAX + 1));
 
                 System.out.format("thread %s invia: %s $ al suo client %n",
-                        id, rs.getValue());
-                os.writeObject(rs);
+                        id, rq.getValue());
+                os.writeObject(rq);
 
                 /*
                  * os.flush()
@@ -65,12 +65,12 @@ public class ServerThread implements Runnable {
 
                 Object i = is.readObject();
 
-                if (i instanceof Request) {
+                if (i instanceof Response) {
 
                     // converte "i" in un tipo Request
-                    Request rq = (Request) i;
+                    Response rs = (Response) i;
 
-                    if (rq.getValue() == 0) {
+                    if (rs.getValue() == 0) {
                         System.out.format("thread %s riceve: il client non  ha acquistato il prodotto %n",
                                 id);
                         count++;
